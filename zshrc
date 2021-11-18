@@ -14,7 +14,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export EDITOR=nvim
 alias vim=nvim
 
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 7
