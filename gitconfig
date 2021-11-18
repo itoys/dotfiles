@@ -1,0 +1,11 @@
+[user]
+	name = Artem Egorov
+	email = toysruss89@gmail.com
+[github]
+	user = itoys
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[apply]
+  whitespace = fix
