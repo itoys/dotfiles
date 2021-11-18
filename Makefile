@@ -65,6 +65,7 @@ $(HOMEBREW_LOCATION)/brew:
 uninstall:
 	@echo "Cleaning up dotfiles"
 	@for f in $(DOTFILES); do if [ -h $$f ]; then rm -i $$f; fi ; done
+	if [ -h ${HOME}/.zshrc ]; then rm -i ${HOME}/.zshrc
 
 .PHONY: codespaces
 codespaces:
