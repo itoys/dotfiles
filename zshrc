@@ -9,13 +9,12 @@ export SHELL=/bin/zsh
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/home/linuxbrew/.linuxbrew/bin/:$PATH
 export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
-export GOPATH=$HOME
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export EDITOR=nvim
 alias vim=nvim
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 7
@@ -40,3 +39,5 @@ setopt hist_ignore_space
 setopt hist_verify
 
 setopt correct_all
+
+[ -f "${HOME}/.dotoverrides/zshrc" ] && source ${HOME}/.dotoverrides/zshrc

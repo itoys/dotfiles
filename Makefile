@@ -4,7 +4,7 @@
 
 GIT := $(shell which git)
 # files you want to install
-EXCLUDE := README.md Makefile install.sh vscode
+EXCLUDE := README.md Makefile install.sh vscode zshrc
 FILES := $(shell ls)
 SOURCES := $(filter-out $(EXCLUDE),$(FILES))
 DOTFILES := $(patsubst %, ${HOME}/.%, $(SOURCES))
@@ -15,26 +15,25 @@ DEFAULT_TARGETS := $(DOTFILES)
 OS := $(shell uname -s)
 ifeq ($(OS),Darwin)
 HOMEBREW_LOCATION := /usr/local/bin
-NVIM_LOCATION := /opt/homebrew/bin/nvim
 else ifeq ($(OS),Linux)
 HOMEBREW_LOCATION := /home/linuxbrew/.linuxbrew/bin
-NVIM_LOCATION := /home/linuxbrew/.linuxbrew/bin/nvim
 endif
 
 .PHONY: homebrew
 homebrew: $(HOMEBREW_LOCATION)/brew
 
 .PHONY: ohmyzsh
-ohmyzsh: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ohmyzsh:
+	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o install-oh-my-zsh.sh;
+	yes | sh install-oh-my-zsh.sh
+	rm -f install-oh-my-zsh.sh
+	ln -fs $(PWD)/zshrc ${HOME}/.zshrc
 
 # tasks
 .PHONY : uninstall install
 
 $(DOTFILES): $(addprefix ${HOME}/., %) : ${PWD}/%
 	ln -fs $< $@
-
-${HOME}/.zshrc: $(PWD)/zshrc
-	ln -fs $(PWD)/zshrc $@
 
 ${HOME}/.config/Code/User/settings.json:
 	install -d $(dir $@)
@@ -44,13 +43,13 @@ ${HOME}/.config/Code/User/settings.json:
 vscode: ${HOME}/.config/Code/User/settings.json
 
 ifeq ($(CODESPACES), true)
-install: ohmyzsh $(DEFAULT_TARGETS) brew-bundle codespaces vscode
+install: $(DEFAULT_TARGETS) brew-bundle codespaces ohmyzsh vscode
 else ifeq ($(OS), FreeBSD)
 install: $(DEFAULT_TARGETS)
 else ifeq ($(CI), true)
 install: $(DEFAULT_TARGETS)
 else
-install: ohmyzsh $(DEFAULT_TARGETS) brew-bundle ohmyzsh
+install: $(DEFAULT_TARGETS) brew-bundle ohmyzsh
 endif
 
 .PHONY: brew-bundle
@@ -68,11 +67,3 @@ uninstall:
 .PHONY: codespaces
 codespaces:
 	./setup-codespaces
-
-.PHONY: bundle-install
-bundle-install:
-	bundle install --gemfile=spec/Gemfile
-
-.PHONY: spec
-spec:
-	bundle exec --gemfile=spec/Gemfile rspec --format=documentation spec/
