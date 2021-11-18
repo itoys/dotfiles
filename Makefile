@@ -27,7 +27,6 @@ ohmyzsh:
 	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o install-oh-my-zsh.sh;
 	yes | sh install-oh-my-zsh.sh
 	rm -f install-oh-my-zsh.sh
-	ln -fs $(PWD)/zshrc ${HOME}/.zshrc
 
 # tasks
 .PHONY : uninstall install
@@ -39,17 +38,20 @@ ${HOME}/.config/Code/User/settings.json:
 	install -d $(dir $@)
 	ln -fs $(PWD)/vscode/settings.json $@
 
+${HOME}/.zshrc: $(PWD)/zshrc
+	ln -fs $(PWD)/zshrc $@
+
 .PHONY: vscode
 vscode: ${HOME}/.config/Code/User/settings.json
 
 ifeq ($(CODESPACES), true)
-install: $(DEFAULT_TARGETS) brew-bundle codespaces ohmyzsh vscode
+install: $(DEFAULT_TARGETS) brew-bundle ${HOME}/.zshrc codespaces vscode
 else ifeq ($(OS), FreeBSD)
 install: $(DEFAULT_TARGETS)
 else ifeq ($(CI), true)
 install: $(DEFAULT_TARGETS)
 else
-install: $(DEFAULT_TARGETS) brew-bundle ohmyzsh
+install: $(DEFAULT_TARGETS) brew-bundle ohmyzsh ${HOME}/.zshrc
 endif
 
 .PHONY: brew-bundle
