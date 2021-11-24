@@ -13,6 +13,7 @@ brew "ripgrep"
 brew "tmux"
 
 if macos?
+  cask "iterm2"
   brew "git"
   brew "gh", args: ["HEAD"]
 end
