@@ -45,6 +45,7 @@ ${HOME}/.zshrc: $(PWD)/zshrc
 vscode: ${HOME}/.config/Code/User/settings.json
 
 ifeq ($(CODESPACES), true)
+export HOMEBREW_INSTALL_FROM_API=true
 install: $(DEFAULT_TARGETS) brew-bundle ${HOME}/.zshrc codespaces vscode
 else ifeq ($(OS), FreeBSD)
 install: $(DEFAULT_TARGETS)
