@@ -4,9 +4,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
+PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+PATH=$HOME/bin:$PATH
+export PATH
 
 export SHELL=/bin/zsh
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/home/linuxbrew/.linuxbrew/bin/:$PATH
 export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
