@@ -45,6 +45,7 @@ codespaces:
 # tasks
 
 ifeq ($(CODESPACES), true)
+export HOMEBREW_INSTALL_FROM_API=true
 install: $(DOTFILES) brew-bundle homebrew ohmyzsh codespaces
 else
 install: $(DOTFILES) brew-bundle homebrew ohmyzsh
