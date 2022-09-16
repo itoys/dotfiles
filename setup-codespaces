@@ -26,5 +26,3 @@ fi
 
 # install linuxbrew suggested packages
 sudo apt-get install build-essential
-
-/bin/zsh
