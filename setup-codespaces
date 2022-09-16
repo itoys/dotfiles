@@ -18,7 +18,6 @@ fi
 
 # set up org specific overrides
 if [[ "$CODESPACE_NAME" =~ .*"github".* ]]; then
-  mkdir -p dotoverrides
   echo "Installing GitHub codespace related dotoverrides configs..."
   echo -e "[user]\n  email = itoys@github.com" >> gitconfig
 
