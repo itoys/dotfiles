@@ -1,3 +1,7 @@
+def macos?
+  RUBY_PLATFORM =~ /darwin/
+end
+
 brew "bat"
 brew "fd"
 brew "ripgrep"
