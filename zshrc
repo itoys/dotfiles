@@ -30,7 +30,7 @@ else
   export EDITOR='code -w'
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export GITHUB_TOKEN=$BUILD_TOKEN
 export GHCR_TOKEN=$BUILD_TOKEN
