@@ -2,17 +2,27 @@
 
 set -e
 
+# default to codespace user
+if [ -z "${USER}" ]; then
+  USER=codespace
+fi
+
+USER_HOME=$(getent passwd $USER | cut -d: -f6)
+
+echo "Changing shell to zsh for ${USER}..."
 # Always want to use ZSH as my default shell (e.g. for SSH)
-if ! grep -q "codespace.*/bin/zsh" /etc/passwd
+if ! grep -q "${USER}.*/bin/zsh" /etc/passwd
 then
-  sudo chsh -s /bin/zsh codespace
+  sudo chsh -s /bin/zsh ${USER}
 fi
 
 # set up org specific overrides
 if [[ "$CODESPACE_NAME" =~ .*"github".* ]]; then
   mkdir -p dotoverrides
   echo "Installing GitHub codespace related dotoverrides configs..."
-  echo -e "[user]\n  email = itoys@github.com" >> dotoverrides/gitconfig
+  echo -e "[user]\n  email = itoys@github.com" >> gitconfig
+
+  echo "machine goproxy.githubapp.com login nobody password ${GITHUB_TOKEN}" > ${USER_HOME}/.netrc
 fi
 
 # install linuxbrew suggested packages

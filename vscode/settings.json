@@ -1,5 +1,0 @@
-{
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "workbench.colorTheme": "Default Dark+",
-  "terminal.integrated.defaultProfile.linux": "zsh"
-}
