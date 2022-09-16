@@ -22,7 +22,7 @@ brew-bundle: homebrew
 	$(HOMEBREW_LOCATION)/brew bundle install --no-lock --file $(BREWFILE)
 
 .PHONY: gem-bundle
-brew-bundle: homebrew
+gem-bundle: 
 	bundle install
 
 .PHONY: $(DOTFILES)
@@ -45,8 +45,8 @@ codespaces:
 # tasks
 
 ifeq ($(CODESPACES), true)
-export HOMEBREW_INSTALL_FROM_API=true
-install: $(DOTFILES) brew-bundle homebrew ohmyzsh codespaces
+# export HOMEBREW_INSTALL_FROM_API="1"
+install: $(DOTFILES) brew-bundle gem-bundle ohmyzsh codespaces
 else
-install: $(DOTFILES) brew-bundle homebrew ohmyzsh
+install: $(DOTFILES) brew-bundle gem-bundle ohmyzsh
 endif
