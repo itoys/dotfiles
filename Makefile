@@ -46,7 +46,8 @@ codespaces:
 
 ifeq ($(CODESPACES), true)
 # export HOMEBREW_INSTALL_FROM_API="1"
-install: $(DOTFILES) brew-bundle gem-bundle ohmyzsh codespaces
+# install: $(DOTFILES) brew-bundle gem-bundle ohmyzsh codespaces
+install: $(DOTFILES) gem-bundle ohmyzsh codespaces
 else
 install: $(DOTFILES) brew-bundle gem-bundle ohmyzsh
 endif
