@@ -37,6 +37,7 @@ if [[ -n $BUILD_TOKEN ]]; then
   export GHCR_TOKEN=$BUILD_TOKEN
 fi
 export GITHUB_USER=itoys
+export DEFAULT_USER=`whoami`
 
 export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/go"
