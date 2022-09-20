@@ -2,6 +2,12 @@
 
 set -e
 
+VSCODE_SETTINGS_PATH="./.vscode/settings.json"
+if [ -f "$VSCODE_SETTINGS_PATH" ]; then
+    LOCAL_SETTINGS=$(jq -s 'add' $VSCODE_SETTINGS_PATH ./settings.json)
+    echo $LOCAL_SETTINGS > $VSCODE_SETTINGS_PATH
+else
+
 # default to codespace user
 if [ -z "${USER}" ]; then
   USER=codespace
