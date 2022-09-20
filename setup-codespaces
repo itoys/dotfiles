@@ -30,5 +30,7 @@ if [[ "$CODESPACE_NAME" =~ .*"github".* ]]; then
   echo "machine goproxy.githubapp.com login nobody password ${GITHUB_TOKEN}" > ${USER_HOME}/.netrc
 fi
 
+touch $HOME/.zsh/history
+
 # install linuxbrew suggested packages
 sudo apt-get install build-essential
