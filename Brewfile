@@ -5,6 +5,7 @@ end
 brew "bat"
 brew "fd"
 brew "ripgrep"
+brew "tmux"
 
 if macos?
   cask "iterm2"

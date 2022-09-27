@@ -68,3 +68,5 @@ setopt correct_all
 
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [ -f "${HOME}/zshrc" ] && source ${HOME}/zshrc
+
+if [ "$TMUX" = "" ]; then tmux a; fi
