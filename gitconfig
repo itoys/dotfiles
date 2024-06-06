@@ -8,4 +8,6 @@
 [pull]
 	rebase = false
 [apply]
-  whitespace = fix
+	whitespace = fix
+[push]
+	autoSetupRemote = true
