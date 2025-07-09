@@ -32,7 +32,7 @@ $(DOTFILES):
 .PHONY: ohmyzsh
 ohmyzsh:
 	rm -rf ${HOME}/.oh-my-zsh
-	curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -o install-oh-my-zsh.sh;
+	curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o install-oh-my-zsh.sh;
 	yes | sh install-oh-my-zsh.sh
 	rm -rf install-oh-my-zsh.sh
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
@@ -40,8 +40,10 @@ ohmyzsh:
 
 .PHONY: p10k
 p10k:
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-	ln -fs $(PWD)/p10k.zsh ${HOME}/.p10k.zsh
+	mkdir -p "${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/themes"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/themes/powerlevel10k"
+	ln -fs $(PWD)/p10k.zsh $(HOME)/.p10k.zsh
+
 .PHONY: codespaces
 codespaces:
 	./setup-codespaces
