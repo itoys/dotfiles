@@ -71,3 +71,5 @@ setopt correct_all
 [ -f "${HOME}/zshrc" ] && source ${HOME}/zshrc
 
 if [ "$TMUX" = "" ]; then tmux a; fi
+
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
