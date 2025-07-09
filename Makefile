@@ -40,8 +40,8 @@ ohmyzsh:
 
 .PHONY: p10k
 p10k:
-	mkdir -p "${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/themes"
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/themes/powerlevel10k"
+	mkdir -p ${HOME}/.oh-my-zsh/custom/themes"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 	ln -fs $(PWD)/p10k.zsh $(HOME)/.p10k.zsh
 
 .PHONY: codespaces
