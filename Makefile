@@ -38,6 +38,10 @@ ohmyzsh:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	ln -fs $(PWD)/zshrc ${HOME}/.zshrc
 
+.PHONY: p10k
+p10k:
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+	ln -fs $(PWD)/p10k.zsh ${HOME}/.p10k.zsh
 .PHONY: codespaces
 codespaces:
 	./setup-codespaces
