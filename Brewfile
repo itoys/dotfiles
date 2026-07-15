@@ -1,14 +1,15 @@
-def macos?
-  RUBY_PLATFORM =~ /darwin/
-end
+# Taps
+tap "homebrew/bundle"
 
-brew "bat"
-brew "fd"
-brew "ripgrep"
-brew "tmux"
+# CLI Tools (Formulae)
+brew "starship"
+brew "zoxide"
+brew "gh"
 
-if macos?
-  cask "iterm2"
-  brew "git"
-  brew "gh", args: ["HEAD"]
-end
+# GUI Applications (Casks)
+cask "ghostty"
+cask "raycast"
+cask "visual-studio-code"
+
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
