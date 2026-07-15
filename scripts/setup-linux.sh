@@ -1,6 +1,6 @@
-linux.sh
 #!/bin/bash
 # Linux/Codespaces specific installation steps
+
 echo "🐧 Running Linux setup..."
 
 mkdir -p "$HOME/.local/bin"
