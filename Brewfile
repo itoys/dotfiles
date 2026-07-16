@@ -5,6 +5,7 @@ tap "homebrew/bundle"
 brew "starship"
 brew "zoxide"
 brew "gh"
+brew "copilot-cli"
 
 # GUI Applications (Casks)
 cask "ghostty"
