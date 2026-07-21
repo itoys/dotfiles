@@ -1,0 +1,6 @@
+term = xterm-256color
+
+font-family = "JetBrainsMono Nerd Font"
+font-feature = "liga=0"
+font-feature = "calt=0"
+font-feature = "clig=0"
