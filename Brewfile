@@ -1,11 +1,8 @@
-# Taps
-tap "homebrew/bundle"
-
 # CLI Tools (Formulae)
 brew "starship"
 brew "zoxide"
 brew "gh"
-brew "copilot-cli"
+brew "copilot"
 
 # GUI Applications (Casks)
 cask "ghostty"

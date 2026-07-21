@@ -15,3 +15,7 @@ else
   echo "⚠️ Error: Brewfile not found at $DOTFILES_DIR/Brewfile"
   exit 1
 fi
+
+echo "🔗 Linking Ghostty config..."
+mkdir -p "$HOME/.config/ghostty"
+ln -sf "$DOTFILES_DIR/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
